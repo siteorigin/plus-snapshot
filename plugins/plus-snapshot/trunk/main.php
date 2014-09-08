@@ -2,6 +2,11 @@
 
 if( !defined('SITEORIGIN_IS_PREMIUM') ) define('SITEORIGIN_IS_PREMIUM', true);
 
+include plugin_dir_path(__FILE__) . '/customizer/customizer.php';
+include plugin_dir_path(__FILE__) . '/ajax-comments/ajax-comments.php';
+include plugin_dir_path(__FILE__) . '/css/css.php';
+include plugin_dir_path(__FILE__) . '/widgets/widgets.php';
+
 include plugin_dir_path(__FILE__) . '/customizer.php';
 include plugin_dir_path(__FILE__) . '/settings.php';
 
@@ -10,7 +15,7 @@ function snapshot_plus_plugin_init(){
 		siteorigin_ajax_comments_activate();
 	}
 }
-add_action('after_setup_theme', 'snapshot_plus_plugin_init', 11);
+add_action('init', 'snapshot_plus_plugin_init', 11);
 
 /**
  * Enqueue snapshot premium's scripts
@@ -42,7 +47,7 @@ function snapshot_plus_meta_box_video_render(){
 	?>
 	<input type="text" name="snapshot_post_video" class="widefat" value="<?php echo esc_attr($video) ?>" />
 	<p class="description"><?php _e('Enter the full url of a oEmbed video (YouTube, Vimeo, etc).', 'snapshot') ?></p>
-<?php
+	<?php
 }
 
 function snapshot_plus_save_post($post_id, $post){
