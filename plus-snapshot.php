@@ -18,19 +18,16 @@ function snapshot_plus_init(){
 
 	if( get_option('template') != 'snapshot' || is_dir( get_template_directory() . '/premium/' ) ) {
 		// Disable the plugin
+		return;
 	}
 
 	if( defined( 'SITEORIGIN_THEME_VERSION' ) ) {
+
 		// We're using Snapshot and that it's definitely the SiteOrigin version
 
-		add_filter('siteorigin_extras_premium_root_uri', 'snapshot_plus_init');
+		add_filter('siteorigin_extras_premium_root_uri', 'snapshot_plus_extras_premium_folder');
 
-		include plugin_dir_path(__FILE__) . '/customizer/customizer.php';
-		include plugin_dir_path(__FILE__) . '/ajax-comments/ajax-comments.php';
-		include plugin_dir_path(__FILE__) . '/css/css.php';
-		include plugin_dir_path(__FILE__) . '/widgets/widgets.php';
-
-		include plugin_dir_path(__FILE__) . '/main.php';
+		require_once plugin_dir_path(__FILE__) . '/main.php';
 
 		// Add the updates plugin
 		include plugin_dir_path(__FILE__) . '/wp-updates-plugin.php';
