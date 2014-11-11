@@ -26,7 +26,7 @@ function snapshot_plus_enqueue_scripts(){
 	wp_enqueue_style('snapshot-spritemaps', plugin_dir_url(__FILE__).'/assets/sprites.css', array(), SITEORIGIN_THEME_VERSION);
 
 	if(siteorigin_setting('general_search')){
-		wp_enqueue_script( 'snapshot-search', plugin_dir_url(__FILE__).'/assets/js/search.js', array('jquery'), SITEORIGIN_THEME_VERSION);
+		wp_enqueue_script( 'snapshot-search', plugin_dir_url(__FILE__).'/assets/search.js', array('jquery'), SITEORIGIN_THEME_VERSION);
 		wp_localize_script( 'snapshot-search', 'snapshotSearch', array(
 			'menuText' => siteorigin_setting('general_search_menu_text')
 		) );
